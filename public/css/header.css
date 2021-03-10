@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Shippori+Mincho+B1:wght@600&display=swap');
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Montserrat',sans-serif;
+  font-family: 'Shippori Mincho B1', serif;
 }
 nav{
-  background: #151515;
+  background: #82c0cf;
   padding: 5px 40px;
 }
 nav ul{
@@ -34,7 +34,7 @@ nav ul li.items:after{
   bottom: 5px;
   height: 2px;
   width: 100%;
-  background: #33ffff;
+  background: white;
   opacity: 0;
   transition: all 0.2s linear;
 }
@@ -51,13 +51,14 @@ nav ul li.logo{
   user-select: none;
 }
 nav ul li a{
-  color: white;
-  font-size: 18px;
+  color: #fdfcfc;
+  font-size: 22px;
   text-decoration: none;
   transition: .4s;
 }
 nav ul li:hover a{
-  color: cyan;
+  color: white;
+  transform:translateY(5px);
   text-decoration: none;
 }
 nav ul li i{
@@ -91,4 +92,8 @@ nav ul li.btn.hide i:before{
   nav ul li.items:hover:after{
     opacity: 0;
   }
+}
+.Main-logo{
+  font-size: 35px;
+  padding: 0;
 }

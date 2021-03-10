@@ -7,7 +7,7 @@ body{
     height: 100%;
     letter-spacing:1px;
     font-family: OpenSans, Arial, Helvetica, sans-serif;
-    background-color:white;
+    background: linear-gradient(rgba(251, 250, 248, 0.3), rgba(251, 250, 248, 0.4)), url("../images/bank_bg.jpg") center/cover no-repeat fixed;
     
 }
 
@@ -18,7 +18,7 @@ hr{
 }
 
 #body-wrapper {
-    background: #73BFB0;
+    /* background: #73BFB0; */
 }
 
 button{
@@ -39,6 +39,7 @@ p{
 
 .center{
     text-align: center;
+    opacity: 0.92;
 }
 
 .bal {
@@ -252,7 +253,7 @@ form[action="/success"] .center {
 }
 
 .table-bordered td,.table-bordered th{
-    border: solid 2px #000000;
+    /* border: solid 2px #000000; */
 }
 
 .table tbody {
@@ -416,7 +417,7 @@ color: black;
 
 .other-details h1{
     font-size: 2rem;
-    color: white;
+    color: rgb(247, 181, 181);
     font-weight: bold;
 }
 
@@ -424,8 +425,8 @@ color: black;
     margin-bottom: 30px;
     margin-top: 30px;
     padding:20px 20px;
-    color: white;
-    background-color: rgb(155, 151, 178);
+    color: #668bb4;
+    /* background-color: rgb(155, 151, 178); */
     text-align: center;
     
 }
@@ -442,13 +443,16 @@ color: black;
 .other-details a {
     margin-top: 30px;
     font-size: 2rem;
-    color: white;
+    color: #5bb9af;
     margin-left: 20px;
     margin-right: 20px;
     transition: all 0.5s ease-in;
 }
-.other-details a:hover {
-    color: rgb(54, 52, 52);
+.logo-g:hover{
+    color : black;
+}
+.logo-l:hover{
+    color: rgb(46, 84, 209);
 }
 
 

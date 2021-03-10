@@ -1,17 +1,16 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const body = require("body-parser");
 const _ = require("lodash");
 
 const app = express();
 
-app.use(bodyParser.urlencoded({
-    extended: true
+app.use(body.urlencoded({
+    extended: false
 }));
 app.use(express.static("public"))
 app.set("view engine", "ejs");
-
-mongoose.connect("mongodb+srv://Abhir:Abhir@cluster0.9ap6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect(`mongodb+srv://somyagupta:${process.env.DATAKEY}@shop.xcr2h.mongodb.net/product`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
@@ -44,9 +43,9 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model("User", userSchema);
 
-const defaultUserNames = ["Abhir Raj Shrivastava", "George Silton", "Paul Wright", "Mark Waug", "Chris Green", "Helena Paul", "Mary Elizabeth","Adam Heindarht","Mack Wang","Connor Hawke"];
-const defaultUsersEmail = ["abhir1@gmail.com", "george2@gmail.com", "paul3@gmail.com", "mark4@gmail.com", "chris5@gmail.com", "helena6@gmail.com", "mary7@gmail.com","adam8@gmail.com","mack9@gmail.com","connor10@gmail.com"];
-const defaultUsersCountry = ["India", "Germany","USA", "France", "Brazil","Mexico", "Spain","Zimbabwe","Australia","UAE"];
+const defaultUserNames = ["Somya Gupta", "George Silton", "Paul Wright", "Mark Waug", "Chris Green", "Helena Paul", "Mary Elizabeth", "Adam Heindarht", "Mack Wang", "Connor Hawke"];
+const defaultUsersEmail = ["Somyagupta.un@gmail.com", "george2@gmail.com", "paul3@gmail.com", "mark4@gmail.com", "chris5@gmail.com", "helena6@gmail.com", "mary7@gmail.com", "adam8@gmail.com", "mack9@gmail.com", "connor10@gmail.com"];
+const defaultUsersCountry = ["India", "Germany", "USA", "France", "Brazil", "Mexico", "Spain", "Zimbabwe", "Australia", "UAE"];
 
 const defaultUsers = [];
 for (let i = 0; i < defaultUserNames.length; i++) {
@@ -91,7 +90,9 @@ app.get("/", function (req, res) {
                 res.redirect("/");
             } else {
                 const users = JSON.stringify(defaultUserNames);
-                res.render("bank",{usersNames:users});
+                res.render("bank", {
+                    usersNames: users
+                });
             }
         }
     });
@@ -104,7 +105,7 @@ app.get("/users", function (req, res) {
         const users = JSON.stringify(defaultUserNames);
         res.render("users", {
             users: foundUsers,
-            usersNames:users
+            usersNames: users
         });
     });
 });
@@ -116,91 +117,98 @@ app.get("/all-transections", function (req, res) {
         const users = JSON.stringify(defaultUserNames);
         res.render("history", {
             history: foundHistory,
-            usersNames:users
+            usersNames: users
         });
     });
 });
 
-app.get("/invalid-search",function(req,res){
+app.get("/invalid-search", function (req, res) {
     const users = JSON.stringify(defaultUserNames);
-    res.render("invalidSearch",{
-        usersNames:users
+    res.render("invalidSearch", {
+        usersNames: users
     });
 });
 
 
-app.post("/search-user",function(req,res){
+app.post("/search-user", function (req, res) {
     const searchedUser = req.body.user;
-    User.find({name:searchedUser},function(err,foundUsers){
-       
-        if(foundUsers.length===0){
-            
+    User.find({
+        name: searchedUser
+    }, function (err, foundUsers) {
+
+        if (foundUsers.length === 0) {
+
             res.redirect("/invalid-search");
-        }
-        else{
-            res.redirect("/user-profile/"+searchedUser);
+        } else {
+            res.redirect("/user-profile/" + searchedUser);
         }
     });
 });
 
-app.get("/other-details",function(req,res){
+app.get("/other-details", function (req, res) {
     const users = JSON.stringify(defaultUserNames);
-    res.render("otherDetails",{
-        usersNames:users
+    res.render("otherDetails", {
+        usersNames: users
     });
 });
 
 
 app.post("/user", function (req, res) {
     const user = JSON.parse(req.body.user);
-    res.redirect("/user-profile/"+user.name);
+    res.redirect("/user-profile/" + user.name);
 });
 
-app.get("/user-profile/:userName",function(req,res){
+app.get("/user-profile/:userName", function (req, res) {
     const userName = req.params.userName;
     const users = JSON.stringify(defaultUserNames);
-    User.findOne({name:userName},function(err,foundUser){
-        res.render("userProfile",{
+    User.findOne({
+        name: userName
+    }, function (err, foundUser) {
+        res.render("userProfile", {
             currentUser: foundUser,
-            usersNames:users
+            usersNames: users
         });
-    });  
+    });
 });
 
 app.post("/transferMoney", function (req, res) {
     const user = JSON.parse(req.body.user);
-    res.redirect("/transferMoney-get/"+user.name);
+    res.redirect("/transferMoney-get/" + user.name);
 });
 
-app.get("/transferMoney-get/:userName",function(req,res){
+app.get("/transferMoney-get/:userName", function (req, res) {
     const userName = req.params.userName;
     const users = JSON.stringify(defaultUserNames);
-    User.findOne({name:userName},function(err,foundUser){
-        if(!err){
-            res.render("transferMoney",{
-                currentUserBalance : foundUser.balance,
-                currentUserName : foundUser.name,
+    User.findOne({
+        name: userName
+    }, function (err, foundUser) {
+        if (!err) {
+            res.render("transferMoney", {
+                currentUserBalance: foundUser.balance,
+                currentUserName: foundUser.name,
                 users: defaultUserNames,
-                usersNames:users
-            }); 
-        }  
+                usersNames: users
+            });
+        }
     });
 });
 
-app.get("/user-history-get/:userName",function(req,res){
+app.get("/user-history-get/:userName", function (req, res) {
     const userName = req.params.userName;
     const users = JSON.stringify(defaultUserNames);
-    User.findOne({name:userName},function(err,foundUser){
-        res.render("userHistory",{
-            currentUser:foundUser,
-            usersNames:users
+    User.findOne({
+        name: userName
+    }, function (err, foundUser) {
+        res.render("userHistory", {
+            currentUser: foundUser,
+            usersNames: users
         })
     });
 });
 
 app.post("/user-history", function (req, res) {
     const user = JSON.parse(req.body.user);
-    res.redirect("/user-history-get/"+user.name);
+    res.redirect("/user-history-get/" + user.name);
 
 });
 
@@ -212,7 +220,7 @@ app.post("/success", function (req, res) {
     User.findOne({
         name: from
     }, function (err, sender) {
-        
+
         updateSenderBalace(sender.balance - amount);
     });
 
@@ -242,14 +250,14 @@ app.post("/success", function (req, res) {
         }, {
             new: true
         }, function (err, sender) {
-            
+
         });
     }
 
     User.findOne({
         name: to
     }, function (err, receiver) {
-        
+
         updateReceiverBalance(receiver.balance + amount);
     });
 
@@ -278,7 +286,7 @@ app.post("/success", function (req, res) {
         }, {
             new: true
         }, function (err, receiver) {
-           
+
         });
     }
 
@@ -297,16 +305,16 @@ app.get("/success-get/:amount/:to/:remainingAmount", function (req, res) {
         balance: Number(req.params.amount),
         anotherPerson: req.params.to,
         remainingBalance: Number(req.params.remainingAmount),
-        usersNames:users
+        usersNames: users
     });
 });
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000;
+    port = 3000;
 }
 
- 
+
 
 app.listen(port, function () {
     console.log("App running on port 3000");

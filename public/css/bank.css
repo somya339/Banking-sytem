@@ -1,6 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=Shippori+Mincho+B1:wght@600&display=swap');
+*{
+    font-family: 'Akaya Telivigala', cursive;
+}
+
 #starter {
     min-height: 100vh;
-    background: linear-gradient(rgba(251, 250, 248, 0.5), rgba(251, 250, 248, 0.4)), url("../images/bankbg.jpg") center/cover no-repeat fixed;
+    background: linear-gradient(rgba(251, 250, 248, 0.3), rgba(251, 250, 248, 0.4)), url("../images/bank_bg.jpg") center/cover no-repeat fixed;
     position: relative;
 }
 
@@ -36,28 +41,31 @@
 }
 
 
-.banner-btn, .extra-btn {
+.banner-btn,
+.extra-btn {
     display: inline-block;
-    background-color: rgb(101, 116, 58);
+    background-color: rgb(254 158 159);
     text-transform: uppercase;
     padding: 0.8rem 1.2rem;
     color: white;
     font-weight: bold;
-    outline: 0.2rem solid rgb(101, 116, 58);
-    outline-offset: 4px;
+    /* outline: 0.2rem solid rgb(219 253 252); */
+    /* outline-offset: 4px; */
     cursor: pointer;
     margin-top: 2rem;
+    border-radius: 47px;
     transition: all 0.5s ease-in;
 }
 
-.banner-btn:hover, .extra-btn:hover { 
+.banner-btn:hover,
+.extra-btn:hover {
     color: #fff;
-    opacity: 0.4;
+    opacity: 0.8;
 }
 
 .banner-btn {
-   padding: 1.2rem 1.5rem; 
-   animation: bttn 5s ease-in-out 1;
+    padding: 1.2rem 1.5rem;
+    animation: bttn 5s ease-in-out 1;
 }
 
 @keyframes bttn {
@@ -65,6 +73,7 @@
         transform: scale(2);
         opacity: 0;
     }
+
     100% {
         transform: scale(1);
         opacity: 1;
@@ -73,36 +82,43 @@
 
 @keyframes slideLeft {
     0% {
-        transform: translateX(1000px);
+        transform: scale(0);
+        opacity: 0;
     }
+
     50% {
-        transform: translateX(-200px);
+        transform: scale(0.5);
+        opacity: 0.5;
     }
-    75% {
-        transform: translateX(50px);
-    }
+
     100% {
-        transform: translateX(0px);
+        transform: scale(1);
+        opacity: 1;
+
     }
 }
-
 @keyframes slideRight {
     0% {
-        transform: translateX(-1000px);
+        transform: scale(0);
+        opacity: 0;
     }
+
     50% {
-        transform: translateX(200px);
+        transform: scale(0.5);
+        opacity: 0.5;
     }
-    75% {
-        transform: translateX(-50px);
-    }
+
     100% {
-        transform: translateX(0px);
+        transform: scale(1);
+        opacity: 1;
+
     }
 }
 
 @media screen and (max-width: 992px) {
-    .banner-content, .banner-made {
+
+    .banner-content,
+    .banner-made {
         font-size: 20px;
     }
 }
