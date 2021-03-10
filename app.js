@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const body = require("body-parser");
 const _ = require("lodash");
-
+const env = require('dotenv');
+env.config();
 const app = express();
 
 app.use(body.urlencoded({
