@@ -1,0 +1,30 @@
+<%- include("header") -%>
+
+
+<link rel="stylesheet" href="/css/bank.css">
+
+<div class="wrapper">
+
+     <header id = "starter">
+        <div class="banner">
+            <h1 class="banner-title">Sparks Bank</h1>
+            <h3 class="banner-content">Good banking is produced not only by Good Laws, but by Good Bankers</h3>
+            <h3 class="banner-made">Project made by <br>Abhir Raj Shrivastava</h3>
+            <a href="https://www.thesparksfoundationsingapore.org/" class="banner-btn">Explore</a>
+         </div>
+    </header> 
+</div>
+
+<script >
+    $(document).ready(function(){
+        $("#footer").css("display","none");
+        $("#search-box").css("display","none");
+
+        let bodyHeight = $(document).outerHeight();
+            let footerHeight = $(".navbar").outerHeight();
+            let bodyWrapperHeight = bodyHeight-footerHeight;
+            $(".wrapper").css('height',`${bodyWrapperHeight}px`);
+    });
+</script>
+
+<%-include("footer")-%>
