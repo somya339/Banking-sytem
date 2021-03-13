@@ -11,11 +11,6 @@ app.use(body.urlencoded({
 }));
 app.use(express.static("public"))
 app.set("view engine", "ejs");
-mongoose.connect(`mongodb+srv://somyagupta:${process.env.DATAKEY}@shop.xcr2h.mongodb.net/product`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-});
 
 const historySchema = mongoose.Schema({
     day: Number,
@@ -317,6 +312,12 @@ if (port == null || port == "") {
 
 
 
-app.listen(port, function () {
-    console.log("App running on port 3000");
+mongoose.connect("mongodb+srv://Abhir:Abhir@cluster0.9ap6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false
+}).then(() => {
+    app.listen(port, function () {
+        console.log("App running on port 3000");
+    });
 });
