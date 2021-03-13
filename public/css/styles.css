@@ -136,18 +136,16 @@ form[action="/success"] .center {
 
 .form-submit-btn{
     display: inline-block;
-    background-color: rgb(101, 116, 58);
+    background-color: rgb(254 158 159);
     text-transform: uppercase;
-    padding: 0.8rem 2.2rem;
+    padding: 0.8rem 1.2rem;
     color: white;
     font-weight: bold;
-    outline: 0.2rem solid rgb(101, 116, 58);
-    outline-offset: 4px;
     cursor: pointer;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    border-radius: 47px;
     transition: all 0.5s ease-in;
-    animation: bttn 5s ease-in-out 1;
+    animation: bttn 5s ease-in-out 1
 
 }
 
@@ -376,18 +374,16 @@ color: black;
 
 .success-button{
     display: inline-block;
-    background-color: rgb(101, 116, 58);
+    background-color: rgb(254 158 159);
     text-transform: uppercase;
-    padding: 0.8rem 2.2rem;
+    padding: 0.8rem 1.2rem;
     color: white;
     font-weight: bold;
-    outline: 0.2rem solid rgb(101, 116, 58);
-    outline-offset: 4px;
     cursor: pointer;
     margin-top: 2rem;
-    margin-bottom: 2rem;
+    border-radius: 47px;
     transition: all 0.5s ease-in;
-    animation: bttn 5s ease-in-out 1;
+    animation: bttn 5s ease-in-out 1
 }
 .success-button:hover {
     color: #fff;
