@@ -312,7 +312,7 @@ if (port == null || port == "") {
 
 
 
-mongoose.connect("mongodb+srv://Abhir:Abhir@cluster0.9ap6h.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATAKEY, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
